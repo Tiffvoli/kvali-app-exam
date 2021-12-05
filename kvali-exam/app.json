@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "kavli-app",
+    "slug": "kavli-app",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "kavli-app"
+}
