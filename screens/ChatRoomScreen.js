@@ -20,10 +20,10 @@ let moment = require('moment-timezone');
 export default function ChatRoomScreen(props) {
    const dispatch = useDispatch();
    const roomId = props.route.params.id;
-
    const chatMessages = useSelector(state => state.chat.chatRooms).find(
       room => room.id === id,
-   );
+   ).messages;
+
    const loggedInUser = useSelector(state => state.user.loggedInUser);
    console.log(loggedInUser);
    const [onChangeMsg, setOnChangeMsg] = React.useState('');

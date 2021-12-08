@@ -39,7 +39,6 @@ export default function LogInScreen(props) {
             user = JSON.parse(await SecureStore.getItemAsync('user'));
          } catch (e) {
             // Restoring token failed
-            console.log('restore token failed');
          }
 
          dispatch(restoreUser(user, userToken));
@@ -63,10 +62,10 @@ export default function LogInScreen(props) {
                value={password}
                placeholder="********"></TextInput>
          </View>
-
+         {/* 
          <Text style={[defaultStyles.btnLink, styles.forgotPass]}>
             Forgot password?
-         </Text>
+         </Text> */}
          <Pressable
             style={[defaultStyles.btnPrimary, defaultStyles.lightShadow]}
             onPress={handleLogIn}>

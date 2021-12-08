@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/core';
 // Components
 import { StyleSheet, View, Button } from 'react-native';
 import CardOverlay from '../components/CardOverlay';
+import DiscoverCard from '../components/DiscoverCard';
 import SearchField from '../components/SearchField';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -13,25 +14,25 @@ export default function DiscoverScreen() {
    return (
       <View style={[styles.align, defaultStyles.loggedInBackground]}>
          <SearchField placeholder="Search for events, posts and more"></SearchField>
-         <CardOverlay
+         <DiscoverCard
             title="All events"
             imageSource={require('../assets/discover/all-events-2x.png')}
             onPress={() => navigation.navigate('EventsScreen')}
             overlayColor={{
                backgroundColor: '#700F6E',
-            }}></CardOverlay>
-         <CardOverlay
+            }}></DiscoverCard>
+         <DiscoverCard
             title="All Student Organisations"
-            imageSource={require('../assets/discover/all-events-2x.png')}
+            imageSource={require('../assets/discover/all-orgs-2x.png')}
             overlayColor={{
                backgroundColor: '#32305D',
-            }}></CardOverlay>
-         <CardOverlay
+            }}></DiscoverCard>
+         <DiscoverCard
             title="All Posts"
-            imageSource={require('../assets/discover/all-events-2x.png')}
+            imageSource={require('../assets/discover/all-posts-2x.png')}
             overlayColor={{
                backgroundColor: '#07936B',
-            }}></CardOverlay>
+            }}></DiscoverCard>
       </View>
    );
 }

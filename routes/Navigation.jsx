@@ -94,15 +94,15 @@ export default function Navigation() {
          ) : (
             <Stack.Navigator>
                <Stack.Screen
-                  name="SignUpScreen"
-                  component={SignUpScreen}
+                  name="LogInScreen"
+                  component={LogInScreen}
                   options={{
                      headerShown: false,
                   }}
                />
                <Stack.Screen
-                  name="LogInScreen"
-                  component={LogInScreen}
+                  name="SignUpScreen"
+                  component={SignUpScreen}
                   options={{
                      headerShown: false,
                   }}

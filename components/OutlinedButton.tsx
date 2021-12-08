@@ -27,7 +27,7 @@ export default function OutlinedButton({
 const styles = StyleSheet.create({
    buttonStyle: {
       backgroundColor: '#fff',
-      margin: 10,
+      // margin: 10,
       paddingVertical: 10,
       paddingHorizontal: 20,
       borderRadius: 5,

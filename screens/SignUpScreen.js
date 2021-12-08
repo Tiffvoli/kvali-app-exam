@@ -32,7 +32,7 @@ export default function SignUpScreen() {
       <View style={[defaultStyles.pageCenter, defaultStyles.welcomeBackground]}>
          <AppLogo />
          <Text style={[defaultStyles.headerH1, styles.titleAlign]}>
-            Sign up to get access
+            Sign up
          </Text>
          <View style={[styles.shadow, defaultStyles.fieldset]}>
             <TextField
@@ -67,7 +67,7 @@ export default function SignUpScreen() {
          <Pressable
             style={[defaultStyles.btnPrimary, defaultStyles.lightShadow]}
             onPress={handleSignUp}>
-            <Text style={defaultStyles.btnPrimaryContent}>Get access</Text>
+            <Text style={defaultStyles.btnPrimaryContent}>Sign up</Text>
          </Pressable>
          <View style={styles.signUpLinkWrapper}>
             <Text>Already have an account? </Text>

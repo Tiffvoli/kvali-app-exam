@@ -3,9 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchEvents } from '../store/actions/EventActions';
 import { useNavigation } from '@react-navigation/core';
 
-import { StyleSheet, View, FlatList, SafeAreaView } from 'react-native';
+import defaultStyles from '../styles/General';
+import { StyleSheet, View, FlatList, Text, Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import CardGradient from '../components/CardGradient';
+import EventCard from '../components/EventCard';
 
 export default function EventsScreen() {
    const navigation = useNavigation();
@@ -23,12 +25,15 @@ export default function EventsScreen() {
 
    return (
       <View style={styles.container}>
+         <Pressable style={[defaultStyles.btnEvent, defaultStyles.lightShadow]}>
+            <Text style={defaultStyles.btnPrimaryContent}>Create an event</Text>
+         </Pressable>
          <View style={{ flex: 1 }}>
             <FlatList
                data={events}
                keyExtractor={item => item.id}
                renderItem={({ item }) => (
-                  <CardGradient
+                  <EventCard
                      title={item?.eventTitle}
                      groupName={item?.group}
                      iconAddress={

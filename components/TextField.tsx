@@ -68,6 +68,7 @@ const styles = StyleSheet.create({
       backgroundColor: '#fff',
       marginHorizontal: 10,
       marginVertical: 13,
+      textTransform: 'lowercase',
       // borderColor: '#000',
       // borderWidth: 1,
    },

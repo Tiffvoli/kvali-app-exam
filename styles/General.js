@@ -7,12 +7,29 @@ export default generalStyles = StyleSheet.create({
       color: '#32305D',
       fontFamily: 'Teko-Medium',
    },
+   H2: {
+      fontWeight: 'bold',
+      fontSize: 14,
+      color: '#BABADB',
+      fontFamily: 'Teko-Medium',
+      textTransform: 'uppercase',
+   },
    normalText: {
       fontSize: 12,
       fontFamily: 'OpenSans-Regular',
    },
+   boldText: {
+      fontSize: 12,
+      fontFamily: 'OpenSans-Bold',
+   },
    whiteText: {
       color: '#fff',
+   },
+   darkText: {
+      color: '#333',
+   },
+   centerText: {
+      textAlign: 'center',
    },
    pageCenter: {
       flex: 1,
@@ -37,10 +54,11 @@ export default generalStyles = StyleSheet.create({
    },
    formInput: {
       padding: 18,
-      width: 333,
+      width: 374,
       backgroundColor: '#fff',
       borderWidth: 1,
       borderColor: '#EEEEEE',
+      textTransform: 'lowercase',
    },
    fieldset: {
       flexDirection: 'column',
@@ -64,6 +82,17 @@ export default generalStyles = StyleSheet.create({
       fontWeight: 'bold',
       color: '#5050A5',
    },
+   btnEvent: {
+      width: 372,
+      textAlign: 'left',
+      backgroundColor: '#5050A5',
+      padding: 18,
+      borderRadius: 5,
+      marginRight: 20,
+      marginLeft: 20,
+      marginTop: 10,
+      marginBottom: 10,
+   },
    lightShadow: {
       shadowColor: '#AAAAAA29',
       shadowOffset: {
@@ -74,6 +103,9 @@ export default generalStyles = StyleSheet.create({
       shadowRadius: 2,
 
       elevation: 3,
+   },
+   btnPurple: {
+      backgroundColor: '#5050A5',
    },
 });
 

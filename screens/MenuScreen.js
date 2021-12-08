@@ -19,9 +19,9 @@ const Menu = props => {
    });
 
    return (
-      <View style={defaultStyles.pageCenter}>
-         <Text>This is Menu screen</Text>
-
+      <View
+         style={[defaultStyles.pageCenter, defaultStyles.loggedInBackground]}>
+         <Text style={[defaultStyles.headerH1]}>WELCOME</Text>
          <Button onPress={() => dispatch(logOut())} title="Log out"></Button>
       </View>
    );
