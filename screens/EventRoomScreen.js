@@ -1,109 +1,197 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { AntDesign, FontAwesome5, MaterialIcons } from '@expo/vector-icons';
-import OutlinedButton from '../components/OutlinedButton';
-import Button from '../components/Button';
+import { StyleSheet, Text, View, FlatList, ScrollView } from 'react-native';
+import { fetchEvents } from '../store/actions/EventActions';
+
 import { useDispatch, useSelector } from 'react-redux';
 import EventRoomCard from '../components/EventRoomCard';
+import InterestGoing from '../components/InterestGoingCard';
+import Collapsible from '../components/Collapsible';
+import Schedule from '../components/Schedule';
+
 import { Ionicons } from '@expo/vector-icons';
+import OutlinedButton from '../components/OutlinedButton';
+import { AntDesign, FontAwesome5, MaterialIcons } from '@expo/vector-icons';
+import Button from '../components/Button';
 
 const EventRoomScreen = props => {
+   const dispatch = useDispatch();
+   React.useEffect(() => {});
+
+   let eventId = props.route.params.eventTitle;
+
+   const eventDetails = useSelector(state => state?.event?.events).find(
+      event => event?.eventTitle === eventId,
+   );
+   // console.log(eventId);
+   const user = useSelector(state => state.user.loggedInUser);
    const [isInterested, setIsInterested] = React.useState(false);
    const [isGoing, setIsGoing] = React.useState(false);
-   const dispatch = useDispatch();
-
-   const { id } = props.route.params;
-   const eventRoom = useSelector(state => state.event.eventTitle);
-   const user = useSelector(state => state.user.loggedInUser);
-   const handleInterested = () => {
-      setIsInterested(true);
+   const dateTimeOptions = {
+      weekday: 'short',
+      month: 'long',
+      day: 'numeric',
    };
-   const handleChangeStatus = () => {
-      console.log('show slide-up list');
-   };
+   // const handleChangeStatus = () => {
 
-   React.useEffect(() => {
-      console.log(eventRoom);
-   });
+   // };
 
    return (
-      <View style={styles.container}>
-         <EventRoomCard
-            collectionName="Surfs Trip 2020"
-            title="Christmas with CBS Yoga"
-            imageSource={require('../assets/discover-events-imgs/eventcard-placeholder.png')}
-            iconAddress={
-               <Ionicons name="location-sharp" size={18} color="#333" />
-            }
-            iconDateTime={<Ionicons name="time-sharp" size={18} color="#333" />}
-            date="MAN 12. APR"
-            time="12:00 - 14:00"
-            address="2000 Frederiksberg"
-         />
-      </View>
-      // <View>
-      //    {isGoing || isInterested ? (
-      //       <Button
-      //          title={isGoing ? 'Going' : 'Interested'}
-      //          onPress={handleChangeStatus}
-      //          icon={
-      //             isGoing ? (
-      //                <FontAwesome5
-      //                   name="calendar-check"
-      //                   size={16}
-      //                   color="#fff"
-      //                />
-      //             ) : (
-      //                <AntDesign name="star" size={16} color="#fff" />
-      //             )
-      //          }
-      //          buttonStyle={styles.clsInterested}
-      //          secondaryIcon={
-      //             <MaterialIcons
-      //                name="keyboard-arrow-down"
-      //                size={20}
-      //                color="#fff"
-      //             />
-      //          }
-      //       />
-      //    ) : (
-      //       <View View style={styles.btnContainer}>
-      //          <OutlinedButton
-      //             title="Interested"
-      //             onPress={() => setIsInterested(true)}
-      //             icon={<AntDesign name="staro" size={16} color="#5050A5" />}
-      //             buttonStyle={styles.btnWidth}
-      //          />
-      //          <OutlinedButton
-      //             title="Going"
-      //             onPress={() => setIsGoing(true)}
-      //             icon={
-      //                <FontAwesome5
-      //                   name="calendar-check"
-      //                   size={16}
-      //                   color="#5050A5"
-      //                />
-      //             }
-      //             buttonStyle={styles.btnWidth}
-      //          />
-      //       </View>
-      //    )}
-      // </View>
+      <ScrollView>
+         <View style={styles.headerContainer} scrollEnabled={true}>
+            <EventRoomCard
+               collectionName={eventDetails?.group}
+               title={eventDetails?.eventTitle}
+               imageSource={
+                  (eventDetails?.imageName === 'social-res-event' &&
+                     require('../assets/discover-events-imgs/social-res-event.png')) ||
+                  (eventDetails?.imageName === 'cbs-film-ghost' &&
+                     require('../assets/discover-events-imgs/cbs-film-ghost.png')) ||
+                  (eventDetails?.imageName === 'dansic-bootcamp' &&
+                     require('../assets/discover-events-imgs/dansic-bootcamp.png')) ||
+                  (eventDetails?.imageName === 'cbs-art-event' &&
+                     require('../assets/discover-events-imgs/cbs-art-event.png')) ||
+                  (eventDetails?.imageName === 'cbs-yoga-event' &&
+                     require('../assets/discover-events-imgs/cbs-yoga-event.png')) ||
+                  (eventDetails?.imageName === 'cbs-surf' &&
+                     require('../assets/discover-events-imgs/cbs-surf.png')) ||
+                  (eventDetails?.imageName === 'cbs-film-oldboy' &&
+                     require('../assets/discover-events-imgs/cbs-film-oldboy.png'))
+               }
+               iconAddress={
+                  <Ionicons name="location-sharp" size={18} color="#333" />
+               }
+               iconDateTime={
+                  <Ionicons name="time-sharp" size={18} color="#333" />
+               }
+               date={new Date(eventDetails?.date).toLocaleDateString(
+                  'da-DK',
+                  dateTimeOptions,
+               )}
+               time={eventDetails?.timeStart + ' - ' + eventDetails?.timeEnd}
+               address={eventDetails?.address}
+            />
+
+            {/* Interest/Going Dropdown */}
+            {/* going/ interested */}
+            <View style={styles.whiteContainer}>
+               {isGoing || isInterested ? (
+                  <Button
+                     title={isGoing ? 'Going' : 'Interested'}
+                     onPress={handleChangeStatus}
+                     icon={
+                        isGoing ? (
+                           <FontAwesome5
+                              name="calendar-check"
+                              size={16}
+                              color="#fff"
+                           />
+                        ) : (
+                           <AntDesign name="star" size={16} color="#fff" />
+                        )
+                     }
+                     buttonStyle={styles.clsInterested}
+                     secondaryIcon={
+                        <MaterialIcons
+                           name="keyboard-arrow-down"
+                           size={20}
+                           color="#fff"
+                        />
+                     }
+                  />
+               ) : (
+                  <View style={styles.btnContainer}>
+                     <OutlinedButton
+                        title="Interested"
+                        onPress={() => setIsInterested(true)}
+                        icon={
+                           <AntDesign name="staro" size={16} color="#5050A5" />
+                        }
+                        buttonStyle={styles.btnWidth}
+                     />
+                     <OutlinedButton
+                        title="Going"
+                        onPress={() => setIsGoing(true)}
+                        icon={
+                           <FontAwesome5
+                              name="calendar-check"
+                              size={16}
+                              color="#5050A5"
+                           />
+                        }
+                        buttonStyle={styles.btnWidth}
+                     />
+                  </View>
+               )}
+            </View>
+
+            {/* number of interested/going */}
+
+            <View style={styles.flexContainer}>
+               <InterestGoing
+                  icon={<AntDesign name="star" size={13} color="#5050A5" />}
+                  number="18"
+                  title="Interested"
+               />
+               <Text>•</Text>
+               <InterestGoing
+                  icon={
+                     <FontAwesome5
+                        name="calendar-check"
+                        size={16}
+                        color="#5050A5"
+                     />
+                  }
+                  number="456"
+                  title="Going"
+               />
+            </View>
+
+            {/* long description for event */}
+
+            <Collapsible />
+
+            {/* schedule */}
+            <Schedule
+               time1={eventDetails?.schedule.time1}
+               title1={eventDetails?.schedule.title1}
+               time2={eventDetails?.schedule.time2}
+               title2={eventDetails?.schedule.title2}
+               time3={eventDetails?.schedule.time3}
+               title3={eventDetails?.schedule.title3}
+               time4={eventDetails?.schedule.time4}
+               title4={eventDetails?.schedule.title4}
+            />
+         </View>
+      </ScrollView>
    );
 };
 
 export default EventRoomScreen;
 
 const styles = StyleSheet.create({
+   headerContainer: {
+      backgroundColor: '#f5f5f5',
+      paddingBottom: 20,
+   },
+   whiteContainer: {
+      backgroundColor: '#fff',
+   },
    btnContainer: {
       flexDirection: 'row',
-      justifyContent: 'center',
+      justifyContent: 'space-between',
+      margin: 20,
    },
    btnWidth: {
-      width: 160,
+      width: 180,
    },
    clsInterested: {
       width: 'auto',
       padding: 14,
+   },
+   flexContainer: {
+      backgroundColor: '#fff',
+      flexDirection: 'row',
+      justifyContent: 'center',
+      paddingBottom: 20,
    },
 });

@@ -31,6 +31,10 @@ export default generalStyles = StyleSheet.create({
    centerText: {
       textAlign: 'center',
    },
+   bodyText: {
+      fontSize: 14,
+      fontFamily: 'OpenSans-Regular',
+   },
    pageCenter: {
       flex: 1,
       justifyContent: 'center',
@@ -60,6 +64,16 @@ export default generalStyles = StyleSheet.create({
       borderColor: '#EEEEEE',
       textTransform: 'lowercase',
    },
+   formInputLogIn: {
+      paddingHorizontal: 18,
+      paddingTop: 38,
+      paddingBottom: 20,
+      width: 374,
+      backgroundColor: '#fff',
+      borderWidth: 1,
+      borderColor: '#EEEEEE',
+      textTransform: 'lowercase',
+   },
    fieldset: {
       flexDirection: 'column',
       padding: 0,
@@ -70,7 +84,7 @@ export default generalStyles = StyleSheet.create({
       borderRadius: 5,
    },
    btnPrimary: {
-      width: 340,
+      width: 374,
       textAlign: 'left',
       backgroundColor: '#5050A5',
       padding: 18,

@@ -15,7 +15,7 @@ interface Props {
    date: string;
    time: string;
    address: string;
-   imageSource: { uri: string };
+   imageSrc: { uri: string };
    iconDateTime: (arg: any) => void;
    iconAddress: (arg: any) => void;
    onPress: (arg: any) => void;
@@ -29,13 +29,13 @@ export default function EventCard({
    address,
    iconDateTime,
    iconAddress,
-   imageSource,
+   imageSrc,
    onPress,
 }: Props) {
    return (
       <TouchableOpacity style={styles.container} onPress={onPress}>
          <ImageBackground
-            source={imageSource}
+            source={imageSrc}
             resizeMode="cover"
             style={styles.image}>
             <LinearGradient

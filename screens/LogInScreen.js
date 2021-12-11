@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Pressable } from 'react-native';
+import { StyleSheet, Text, View, Pressable, TextInput } from 'react-native';
+
 import { Link } from '@react-navigation/native';
 import defaultStyles from '../styles/General';
 import * as SecureStore from 'expo-secure-store';
@@ -50,13 +51,19 @@ export default function LogInScreen(props) {
       <View style={[defaultStyles.pageCenter, defaultStyles.welcomeBackground]}>
          <Text style={[defaultStyles.headerH1, styles.titleAlign]}>Log in</Text>
          <View style={[defaultStyles.fieldset, defaultStyles.lightShadow]}>
+            <Text style={[defaultStyles.darkText, styles.labelEmail]}>
+               Email
+            </Text>
             <TextInput
-               style={defaultStyles.formInput}
+               style={defaultStyles.formInputLogIn}
                onChangeText={v => onChangeEmail(v)}
                value={email}
                placeholder="student@student.cbs.dk"></TextInput>
+            <Text style={[defaultStyles.darkText, styles.labelPassword]}>
+               Password
+            </Text>
             <TextInput
-               style={defaultStyles.formInput}
+               style={defaultStyles.formInputLogIn}
                onChangeText={v => onChangePassword(v)}
                secureTextEntry={true}
                value={password}
@@ -72,7 +79,7 @@ export default function LogInScreen(props) {
             <Text style={defaultStyles.btnPrimaryContent}>Log in</Text>
          </Pressable>
          <View style={styles.signUpLinkWrapper}>
-            <Text>Don't have an account? </Text>
+            <Text style={styles.purpleText}>Don't have an account? </Text>
             <Link style={defaultStyles.btnLink} to={{ screen: 'SignUpScreen' }}>
                Sign up
             </Link>
@@ -87,6 +94,10 @@ const styles = StyleSheet.create({
       alignContent: 'center',
       alignItems: 'center',
       margin: 20,
+      color: '#32305D',
+   },
+   purpleText: {
+      color: '#32305D',
    },
    forgotPass: {
       margin: 10,
@@ -96,5 +107,23 @@ const styles = StyleSheet.create({
    },
    welcomeView: {
       backgroundColor: '#fff',
+   },
+   labelEmail: {
+      position: 'absolute',
+      top: 10,
+      zIndex: 999,
+      fontFamily: 'OpenSans-Bold',
+      textTransform: 'uppercase',
+      marginHorizontal: 18,
+      color: '#32305D',
+   },
+   labelPassword: {
+      position: 'absolute',
+      top: 86,
+      zIndex: 999,
+      fontFamily: 'OpenSans-Bold',
+      textTransform: 'uppercase',
+      marginHorizontal: 18,
+      color: '#32305D',
    },
 });

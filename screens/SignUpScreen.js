@@ -36,6 +36,7 @@ export default function SignUpScreen() {
          </Text>
          <View style={[styles.shadow, defaultStyles.fieldset]}>
             <TextField
+               style={styles.label}
                inputLabel="e-mail"
                placeholder="@student.cbs.dk"
                value={email}
@@ -91,5 +92,8 @@ const styles = StyleSheet.create({
    },
    shadow: {
       ...defaultStyles.lightShadow,
+   },
+   label: {
+      fontFamily: 'OpenSans-Bold',
    },
 });

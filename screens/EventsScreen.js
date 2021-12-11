@@ -52,7 +52,12 @@ export default function EventsScreen() {
                      )}
                      time={item?.timeStart + ' - ' + item?.timeEnd}
                      address={item?.venue + ', ' + item?.address}
-                     imageSource={
+                     // imageSrc={
+                     //    "require('../assets/discover-events-imgs/" +
+                     //    item?.imageName +
+                     //    "')"
+                     // }
+                     imageSrc={
                         (item?.imageName === 'social-res-event' &&
                            require('../assets/discover-events-imgs/social-res-event.png')) ||
                         (item?.imageName === 'cbs-film-ghost' &&
@@ -94,3 +99,20 @@ const styles = StyleSheet.create({
       marginTop: 10,
    },
 });
+
+// imageSrc={
+//    (item?.imageName === 'social-res-event' &&
+//       require('../assets/discover-events-imgs/social-res-event.png')) ||
+//    (item?.imageName === 'cbs-film-ghost' &&
+//       require('../assets/discover-events-imgs/cbs-film-ghost.png')) ||
+//    (item?.imageName === 'dansic-bootcamp' &&
+//       require('../assets/discover-events-imgs/dansic-bootcamp.png')) ||
+//    (item?.imageName === 'cbs-art-event' &&
+//       require('../assets/discover-events-imgs/cbs-art-event.png')) ||
+//    (item?.imageName === 'cbs-yoga-event' &&
+//       require('../assets/discover-events-imgs/cbs-yoga-event.png')) ||
+//    (item?.imageName === 'cbs-surf' &&
+//       require('../assets/discover-events-imgs/cbs-surf.png')) ||
+//    (item?.imageName === 'cbs-film-oldboy' &&
+//       require('../assets/discover-events-imgs/cbs-film-oldboy.png'))
+// }

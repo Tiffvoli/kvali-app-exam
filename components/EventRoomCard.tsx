@@ -38,13 +38,8 @@ export default function EventRoomCard({
    imageSource,
    onPress,
 }: Props) {
-   const [isInterested, setIsInterested] = React.useState(false);
-   const [isGoing, setIsGoing] = React.useState(false);
-   const handleChangeStatus = () => {
-      console.log('show slide-up list');
-   };
    return (
-      <View style={styles.container}>
+      <View style={[defaultStyles.lightShadow, styles.container]}>
          <Pressable style={[styles.headerBar, defaultStyles.lightShadow]}>
             <View>
                <Text style={defaultStyles.H2}>Part of collection</Text>
@@ -92,58 +87,6 @@ export default function EventRoomCard({
                   {address}
                </Text>
             </View>
-
-            {/* //going/ interested */}
-            <View>
-               {isGoing || isInterested ? (
-                  <Button
-                     title={isGoing ? 'Going' : 'Interested'}
-                     onPress={handleChangeStatus}
-                     icon={
-                        isGoing ? (
-                           <FontAwesome5
-                              name="calendar-check"
-                              size={16}
-                              color="#fff"
-                           />
-                        ) : (
-                           <AntDesign name="star" size={16} color="#fff" />
-                        )
-                     }
-                     buttonStyle={styles.clsInterested}
-                     secondaryIcon={
-                        <MaterialIcons
-                           name="keyboard-arrow-down"
-                           size={20}
-                           color="#fff"
-                        />
-                     }
-                  />
-               ) : (
-                  <View style={styles.btnContainer}>
-                     <OutlinedButton
-                        title="Interested"
-                        onPress={() => setIsInterested(true)}
-                        icon={
-                           <AntDesign name="staro" size={16} color="#5050A5" />
-                        }
-                        buttonStyle={styles.btnWidth}
-                     />
-                     <OutlinedButton
-                        title="Going"
-                        onPress={() => setIsGoing(true)}
-                        icon={
-                           <FontAwesome5
-                              name="calendar-check"
-                              size={16}
-                              color="#5050A5"
-                           />
-                        }
-                        buttonStyle={styles.btnWidth}
-                     />
-                  </View>
-               )}
-            </View>
          </View>
       </View>
    );
@@ -157,10 +100,13 @@ const styles = StyleSheet.create({
       //   borderRadius: 5,
       //   alignSelf: 'stretch',
       //   paddingBottom: 5,
-      height: win.height,
+      height: 'auto',
+      backgroundColor: '#fff',
    },
    contentWrapper: {
-      margin: 20,
+      marginHorizontal: 20,
+      marginTop: 20,
+      marginBottom: 0,
    },
    headerBar: {
       backgroundColor: '#32305D',
@@ -188,10 +134,10 @@ const styles = StyleSheet.create({
       flexDirection: 'column',
    },
    title: {
-      zIndex: 999,
       fontSize: 37,
       fontFamily: 'Teko-Medium',
       color: '#333333',
+      width: '100%',
    },
    groupName: { fontFamily: 'OpenSans-Bold' },
    datetimeText: {

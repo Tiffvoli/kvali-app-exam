@@ -34,7 +34,7 @@ export default function TextField({
 
    return (
       <View style={[styles.textFieldContainer]}>
-         <Text style={[styles.textfieldLabel, defaultStyles.normalText]}>
+         <Text style={[styles.textfieldLabel, defaultStyles.boldText]}>
             {inputLabel}
          </Text>
          <TextInput
@@ -59,9 +59,10 @@ const styles = StyleSheet.create({
       paddingVertical: 10,
    },
    textfieldLabel: {
-      fontWeight: '700',
+      fontFamily: 'OpenSans-Bold',
       textTransform: 'uppercase',
       color: '#32305D',
+      fontWeight: 'bold',
       paddingHorizontal: 10,
    },
    textfield: {
