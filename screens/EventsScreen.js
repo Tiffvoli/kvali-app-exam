@@ -6,7 +6,6 @@ import { useNavigation } from '@react-navigation/core';
 import defaultStyles from '../styles/General';
 import { StyleSheet, View, FlatList, Text, Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import CardGradient from '../components/CardGradient';
 import EventCard from '../components/EventCard';
 
 export default function EventsScreen() {
@@ -79,12 +78,6 @@ export default function EventsScreen() {
                            eventTitle: item?.eventTitle,
                         })
                      }
-                     // onPress={() => {
-                     //    navigation.navigate('EventRoomScreen', {
-                     //       id: item.id,
-                     //       name: item.eventTitle,
-                     //    });
-                     // }}
                   />
                )}
                scrollEnabled={true}></FlatList>

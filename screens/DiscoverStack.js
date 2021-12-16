@@ -47,5 +47,3 @@ const DiscoverStack = () => {
 };
 
 export default DiscoverStack;
-
-const styles = StyleSheet.create({});
