@@ -13,6 +13,7 @@ import ChatRoomScreen from '../screens/ChatRoomScreen';
 import SignUpScreen from '../screens/SignUpScreen';
 import LogInScreen from '../screens/LogInScreen';
 import EventRoomScreen from '../screens/EventRoomScreen';
+import CreateEventScreen from '../screens/CreateEventScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -87,6 +88,14 @@ export default function Navigation() {
                   component={EventRoomScreen}
                   options={({ route }) => ({
                      title: route.params?.eventTitle,
+                     headerBackTitleVisible: false,
+                  })}
+               />
+               <Stack.Screen
+                  name="CreateEventScreen"
+                  component={CreateEventScreen}
+                  options={({ route }) => ({
+                     headerTitle: getHeaderTitle(route),
                      headerBackTitleVisible: false,
                   })}
                />

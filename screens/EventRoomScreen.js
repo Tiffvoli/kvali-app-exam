@@ -1,9 +1,17 @@
 import React from 'react';
-import { StyleSheet, Text, View, FlatList, ScrollView } from 'react-native';
+import {
+   StyleSheet,
+   Text,
+   View,
+   FlatList,
+   ScrollView,
+   Pressable,
+} from 'react-native';
 import { fetchEvents } from '../store/actions/EventActions';
 
 import { useDispatch, useSelector } from 'react-redux';
 import EventRoomCard from '../components/EventRoomCard';
+import defaultStyles from '../styles/General';
 import InterestGoing from '../components/InterestGoingCard';
 import Collapsible from '../components/Collapsible';
 import Schedule from '../components/Schedule';
@@ -55,7 +63,9 @@ const EventRoomScreen = props => {
                   (eventDetails?.imageName === 'cbs-surf' &&
                      require('../assets/discover-events-imgs/cbs-surf.png')) ||
                   (eventDetails?.imageName === 'cbs-film-oldboy' &&
-                     require('../assets/discover-events-imgs/cbs-film-oldboy.png'))
+                     require('../assets/discover-events-imgs/cbs-film-oldboy.png')) ||
+                  (eventDetails?.imageName === 'cbs-default' &&
+                     require('../assets/discover-events-imgs/cbs-default.jpeg'))
                }
                iconAddress={
                   <Ionicons name="location-sharp" size={18} color="#333" />
@@ -148,19 +158,29 @@ const EventRoomScreen = props => {
 
             {/* long description for event */}
 
-            <Collapsible />
+            <Collapsible description={eventDetails?.description} />
 
             {/* schedule */}
             <Schedule
-               time1={eventDetails?.schedule.time1}
-               title1={eventDetails?.schedule.title1}
-               time2={eventDetails?.schedule.time2}
-               title2={eventDetails?.schedule.title2}
-               time3={eventDetails?.schedule.time3}
-               title3={eventDetails?.schedule.title3}
-               time4={eventDetails?.schedule.time4}
-               title4={eventDetails?.schedule.title4}
+               title1={eventDetails?.title1}
+               time1={eventDetails?.time1}
+               title2={eventDetails?.title2}
+               time2={eventDetails?.time2}
+               title3={eventDetails?.title3}
+               time3={eventDetails?.time3}
+               title4={eventDetails?.title4}
+               time4={eventDetails?.time4}
             />
+            <Pressable
+               style={[defaultStyles.btnRemove, defaultStyles.lightShadow]}>
+               <Text
+                  style={[
+                     defaultStyles.btnPrimaryContent,
+                     defaultStyles.centerText,
+                  ]}>
+                  Remove the event
+               </Text>
+            </Pressable>
          </View>
       </ScrollView>
    );

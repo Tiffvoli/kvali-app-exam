@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchEvents } from '../store/actions/EventActions';
 import { useNavigation } from '@react-navigation/core';
-
+import { Link } from '@react-navigation/native';
 import defaultStyles from '../styles/General';
 import { StyleSheet, View, FlatList, Text, Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
@@ -24,9 +24,12 @@ export default function EventsScreen() {
 
    return (
       <View style={styles.container}>
-         <Pressable style={[defaultStyles.btnEvent, defaultStyles.lightShadow]}>
-            <Text style={defaultStyles.btnPrimaryContent}>Create an event</Text>
-         </Pressable>
+         <Link
+            style={[defaultStyles.btnEvent, defaultStyles.whiteText]}
+            to={{ screen: 'CreateEventScreen' }}>
+            Create an event
+         </Link>
+
          <View style={{ flex: 1 }}>
             <FlatList
                data={events}
@@ -70,7 +73,9 @@ export default function EventsScreen() {
                         (item?.imageName === 'cbs-surf' &&
                            require('../assets/discover-events-imgs/cbs-surf.png')) ||
                         (item?.imageName === 'cbs-film-oldboy' &&
-                           require('../assets/discover-events-imgs/cbs-film-oldboy.png'))
+                           require('../assets/discover-events-imgs/cbs-film-oldboy.png')) ||
+                        (item?.imageName === 'cbs-default' &&
+                           require('../assets/discover-events-imgs/cbs-default.jpeg'))
                      }
                      //on press
                      onPress={() =>
