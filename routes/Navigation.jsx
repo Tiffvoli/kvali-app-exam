@@ -14,6 +14,7 @@ import SignUpScreen from '../screens/SignUpScreen';
 import LogInScreen from '../screens/LogInScreen';
 import EventRoomScreen from '../screens/EventRoomScreen';
 import CreateEventScreen from '../screens/CreateEventScreen';
+import EditEventScreen from '../screens/EditEventScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -96,6 +97,14 @@ export default function Navigation() {
                   component={CreateEventScreen}
                   options={({ route }) => ({
                      headerTitle: getHeaderTitle(route),
+                     headerBackTitleVisible: false,
+                  })}
+               />
+               <Stack.Screen
+                  name="EditEventScreen"
+                  component={EditEventScreen}
+                  options={({ route }) => ({
+                     title: route.params?.eventTitle,
                      headerBackTitleVisible: false,
                   })}
                />

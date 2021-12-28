@@ -54,11 +54,7 @@ export default function EventsScreen() {
                      )}
                      time={item?.timeStart + ' - ' + item?.timeEnd}
                      address={item?.venue + ', ' + item?.address}
-                     // imageSrc={
-                     //    "require('../assets/discover-events-imgs/" +
-                     //    item?.imageName +
-                     //    "')"
-                     // }
+                     //image if statements
                      imageSrc={
                         (item?.imageName === 'social-res-event' &&
                            require('../assets/discover-events-imgs/social-res-event.png')) ||

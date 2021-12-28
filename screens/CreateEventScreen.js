@@ -7,22 +7,22 @@ import {
    TextInput,
    ScrollView,
 } from 'react-native';
-import EventInput from '../components/EventInput';
-import { Link } from '@react-navigation/native';
-import defaultStyles from '../styles/General';
-import * as SecureStore from 'expo-secure-store';
+
 import { useNavigation } from '@react-navigation/core';
-import { restoreUser, refreshToken } from '../store/actions/UserActions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addEvent } from '../store/actions/EventActions';
+
+import defaultStyles from '../styles/General';
+import EventInput from '../components/EventInput';
 
 export default function CreateEventScreen() {
    const dispatch = useDispatch();
    const navigation = useNavigation();
+   const user = useSelector(state => state.user.loggedInUser);
 
    const [eventTitle, onChangeventTitle] = React.useState('');
    const [group, onChangeGroup] = React.useState('');
-   const [imageName, onChangeImageName] = React.useState('');
+   const imageName = 'cbs-default';
    const [date, onChangeDate] = React.useState('');
    const [address, onChangeAddress] = React.useState('');
    const [venue, onChangeVenue] = React.useState('');
@@ -37,6 +37,7 @@ export default function CreateEventScreen() {
    const [time3, onChangeTime3] = React.useState('');
    const [title4, onChangeTitle4] = React.useState('');
    const [time4, onChangeTime4] = React.useState('');
+   const author = user.email;
 
    const addNewEvent = () => {
       // Attach and Send to Actions
@@ -59,6 +60,7 @@ export default function CreateEventScreen() {
             time3,
             title4,
             time4,
+            author,
          ),
       ) && navigation.navigate('EventsScreen');
    };
@@ -71,11 +73,9 @@ export default function CreateEventScreen() {
                   Creat an event
                </Text>
                <EventInput
-                  style={styles.textfield}
                   inputLabel="Title"
                   placeholder="Enter the title"
                   value={eventTitle}
-                  onValid={valid => setEmailValid(valid)}
                   setContent={content => onChangeventTitle(content)}
                   setIsCreateEventScreen={true}
                />
@@ -84,13 +84,6 @@ export default function CreateEventScreen() {
                   placeholder="Enter group"
                   value={group}
                   setContent={content => onChangeGroup(content)}
-                  setIsCreateEventScreen={true}
-               />
-               <EventInput
-                  inputLabel="Image"
-                  placeholder="cbs-default"
-                  value={imageName}
-                  setContent={content => onChangeImageName(content)}
                   setIsCreateEventScreen={true}
                />
                <EventInput
@@ -114,7 +107,6 @@ export default function CreateEventScreen() {
                   setContent={content => onChangeVenue(content)}
                   setIsCreateEventScreen={true}
                />
-
                <EventInput
                   inputLabel="Start Time"
                   placeholder="e.g: 12:00"
@@ -202,7 +194,11 @@ export default function CreateEventScreen() {
                />
             </View>
             <Pressable
-               style={[defaultStyles.btnPrimary, defaultStyles.lightShadow]}
+               style={[
+                  defaultStyles.btnPrimary,
+                  defaultStyles.lightShadow,
+                  styles.btn,
+               ]}
                onPress={addNewEvent}>
                <Text
                   style={[
@@ -232,4 +228,23 @@ const styles = StyleSheet.create({
       justifyContent: 'space-between',
       width: '100%',
    },
+   btn: {
+      width: '100%',
+   },
 });
+
+//   <EventInput
+//    inputLabel="Image"
+//    placeholder="cbs-default"
+//    value={imageName}
+//    setContent={imageName}
+//    setIsCreateEventScreen={true}
+// />
+
+//    <EventInput
+//    inputLabel="Author"
+//    placeholder={user.email}
+//    value={author}
+//    setContent={author}
+//    setIsCreateEventScreen={true}
+// />

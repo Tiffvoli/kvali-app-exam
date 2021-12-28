@@ -7,9 +7,10 @@ import {
    ScrollView,
    Pressable,
 } from 'react-native';
-import { fetchEvents } from '../store/actions/EventActions';
-
+import { fetchEvents, deleteEvent } from '../store/actions/EventActions';
+import { useNavigation } from '@react-navigation/core';
 import { useDispatch, useSelector } from 'react-redux';
+
 import EventRoomCard from '../components/EventRoomCard';
 import defaultStyles from '../styles/General';
 import InterestGoing from '../components/InterestGoingCard';
@@ -23,6 +24,7 @@ import Button from '../components/Button';
 
 const EventRoomScreen = props => {
    const dispatch = useDispatch();
+   const navigation = useNavigation();
    React.useEffect(() => {});
 
    let eventId = props.route.params.eventTitle;
@@ -30,7 +32,7 @@ const EventRoomScreen = props => {
    const eventDetails = useSelector(state => state?.event?.events).find(
       event => event?.eventTitle === eventId,
    );
-   // console.log(eventId);
+
    const user = useSelector(state => state.user.loggedInUser);
    const [isInterested, setIsInterested] = React.useState(false);
    const [isGoing, setIsGoing] = React.useState(false);
@@ -39,9 +41,12 @@ const EventRoomScreen = props => {
       month: 'long',
       day: 'numeric',
    };
-   // const handleChangeStatus = () => {
 
-   // };
+   //delete event
+   const Id = eventDetails?.id;
+   const removeEvent = () => {
+      dispatch(deleteEvent(Id)) && navigation.navigate('EventsScreen');
+   };
 
    return (
       <ScrollView>
@@ -171,16 +176,48 @@ const EventRoomScreen = props => {
                title4={eventDetails?.title4}
                time4={eventDetails?.time4}
             />
-            <Pressable
-               style={[defaultStyles.btnRemove, defaultStyles.lightShadow]}>
-               <Text
-                  style={[
-                     defaultStyles.btnPrimaryContent,
-                     defaultStyles.centerText,
-                  ]}>
-                  Remove the event
-               </Text>
-            </Pressable>
+
+            {/* if user creates this event */}
+            {/* can edit and/or the event */}
+
+            {eventDetails?.author == user.email ? (
+               <View style={styles.flex}>
+                  <Pressable
+                     style={[
+                        defaultStyles.btnPrimary,
+                        defaultStyles.lightShadow,
+                        styles.btn,
+                     ]}
+                     onPress={() =>
+                        navigation.navigate('EditEventScreen', {
+                           eventTitle: eventDetails?.eventTitle,
+                        })
+                     }>
+                     <Text
+                        style={[
+                           defaultStyles.btnPrimaryContent,
+                           defaultStyles.centerText,
+                        ]}>
+                        Edit
+                     </Text>
+                  </Pressable>
+                  <Pressable
+                     style={[
+                        defaultStyles.btnRemove,
+                        defaultStyles.lightShadow,
+                        styles.btn,
+                     ]}
+                     onPress={removeEvent}>
+                     <Text
+                        style={[
+                           defaultStyles.btnPrimaryContent,
+                           defaultStyles.centerText,
+                        ]}>
+                        Delete
+                     </Text>
+                  </Pressable>
+               </View>
+            ) : null}
          </View>
       </ScrollView>
    );
@@ -213,5 +250,13 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       justifyContent: 'center',
       paddingBottom: 20,
+   },
+   flex: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+   },
+   btn: {
+      width: 120,
+      paddingVertical: 15,
    },
 });

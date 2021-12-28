@@ -8,6 +8,7 @@ import DiscoverScreen from './DiscoverScreen';
 import EventsScreen from './EventsScreen';
 import EventRoomScreen from './EventRoomScreen';
 import CreateEventScreen from './CreateEventScreen';
+import EditEventScreen from './EditEventScreen';
 
 const Stack = createNativeStackNavigator();
 const DiscoverStack = () => {
@@ -46,6 +47,14 @@ const DiscoverStack = () => {
          <Stack.Screen
             name="EventRoomScreen"
             component={EventRoomScreen}
+            options={({ route }) => ({
+               headerTitle: route.params?.eventTitle,
+               headerBackTitle: '',
+            })}
+         />
+         <Stack.Screen
+            name="EditEventScreen"
+            component={EditEventScreen}
             options={({ route }) => ({
                headerTitle: route.params?.eventTitle,
                headerBackTitle: '',

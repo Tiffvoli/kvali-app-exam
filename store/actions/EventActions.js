@@ -5,6 +5,8 @@ export const ADD_EVENT = 'ADD_EVENT';
 export const EDIT_EVENT = 'EDIT_EVENT';
 export const DELETE_EVENT = 'DELETE_EVENT';
 
+//getting events
+
 export const fetchEvents = () => {
    return async (dispatch, getState) => {
       const token = getState().user.token;
@@ -32,6 +34,8 @@ export const fetchEvents = () => {
    };
 };
 
+//adding a new event
+
 export const addEvent = (
    eventTitle,
    group,
@@ -50,6 +54,7 @@ export const addEvent = (
    time3,
    title4,
    time4,
+   author,
 ) => {
    return async (dispatch, getState) => {
       const token = getState().user.token;
@@ -78,6 +83,7 @@ export const addEvent = (
                time3: time3,
                title4: title4,
                time4: time4,
+               author: author,
             }),
          },
       );
@@ -104,6 +110,7 @@ export const addEvent = (
             time3,
             title4,
             time4,
+            author,
          );
          dispatch({
             type: ADD_EVENT,
@@ -113,23 +120,28 @@ export const addEvent = (
    };
 };
 
+//editing an event
+
 export const editEvent = (
    id,
    eventTitle,
    group,
+   imageName,
    date,
-   timeStart,
-   timeEnd,
    address,
    venue,
-   time1,
-   time2,
-   time3,
-   time4,
+   timeStart,
+   timeEnd,
+   description,
    title1,
+   time1,
    title2,
+   time2,
    title3,
+   time3,
    title4,
+   time4,
+   author,
 ) => {
    return async (dispatch, getState) => {
       const token = getState().user.token;
@@ -144,34 +156,40 @@ export const editEvent = (
                id,
                eventTitle,
                group,
+               imageName,
                date,
-               timeStart,
-               timeEnd,
                address,
                venue,
-               time1,
-               time2,
-               time3,
-               time4,
+               timeStart,
+               timeEnd,
+               description,
                title1,
+               time1,
                title2,
+               time2,
                title3,
-               title4: id,
+               time3,
+               title4,
+               time4,
+               author: id,
                eventTitle,
                group,
+               imageName,
                date,
-               timeStart,
-               timeEnd,
                address,
                venue,
-               time1,
-               time2,
-               time3,
-               time4,
+               timeStart,
+               timeEnd,
+               description,
                title1,
+               time1,
                title2,
+               time2,
                title3,
+               time3,
                title4,
+               time4,
+               author,
             }),
          },
       );
@@ -186,6 +204,8 @@ export const editEvent = (
       }
    };
 };
+
+//deleting an event
 
 export const deleteEvent = id => {
    return async (dispatch, getState) => {
