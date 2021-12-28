@@ -1,13 +1,6 @@
 import React from 'react';
-import {
-   StyleSheet,
-   Text,
-   View,
-   FlatList,
-   ScrollView,
-   Pressable,
-} from 'react-native';
-import { fetchEvents, deleteEvent } from '../store/actions/EventActions';
+import { StyleSheet, Text, View, ScrollView, Pressable } from 'react-native';
+import { deleteEvent } from '../store/actions/EventActions';
 import { useNavigation } from '@react-navigation/core';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -144,7 +137,6 @@ const EventRoomScreen = props => {
             <View style={styles.flexContainer}>
                <InterestGoing
                   icon={<AntDesign name="star" size={13} color="#5050A5" />}
-                  number="18"
                   title="Interested"
                />
                <Text>•</Text>
@@ -156,7 +148,6 @@ const EventRoomScreen = props => {
                         color="#5050A5"
                      />
                   }
-                  number="456"
                   title="Going"
                />
             </View>

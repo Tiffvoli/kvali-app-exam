@@ -4,17 +4,18 @@ import defaultStyles from '../styles/General';
 
 interface Props {
    title: string;
-   number: number;
    icon: () => void;
    secondaryIcon: () => void;
 }
+const goingNo = Math.floor(Math.random() * 200) + 1;
+const interestedNo = Math.floor(Math.random() * 200) + 1;
 
-export default function InterestGoing({ title, icon, number }: Props) {
+export default function InterestGoing({ title, icon }: Props) {
    return (
       <View style={styles.container}>
          <View style={styles.iconStyle}>{icon}</View>
          <Text style={styles.labelStyle}>
-            {number} {title}
+            {title == 'Interested' ? interestedNo : goingNo} {title}
          </Text>
       </View>
    );
