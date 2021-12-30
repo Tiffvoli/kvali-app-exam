@@ -9,7 +9,7 @@ function ChatAsOrg() {
    return (
       <>
          <View>
-            <Text>Org user</Text>
+            <Text>CBS Surf</Text>
          </View>
       </>
    );
@@ -37,7 +37,7 @@ export default function ChatTopTap(props) {
             name="ChatAsPrivate"
             component={ChatScreen}
             options={{
-               title: 'Jacob Robertson',
+               title: 'Ngoc Tram Anh Tran',
             }}
          />
          <TopTap.Screen

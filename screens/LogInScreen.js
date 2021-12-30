@@ -69,10 +69,7 @@ export default function LogInScreen(props) {
                value={password}
                placeholder="********"></TextInput>
          </View>
-         {/* 
-         <Text style={[defaultStyles.btnLink, styles.forgotPass]}>
-            Forgot password?
-         </Text> */}
+
          <Pressable
             style={[defaultStyles.btnPrimary, defaultStyles.lightShadow]}
             onPress={handleLogIn}>

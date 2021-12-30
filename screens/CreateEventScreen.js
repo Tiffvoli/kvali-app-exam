@@ -39,6 +39,8 @@ export default function CreateEventScreen() {
    const [time4, onChangeTime4] = React.useState('');
    const author = user.email;
 
+   const [IsCreateEventScreen, setIsCreateEventScreen] = React.useState(false);
+
    const addNewEvent = () => {
       // Attach and Send to Actions
       dispatch(
@@ -77,7 +79,7 @@ export default function CreateEventScreen() {
                   placeholder="Enter the title"
                   value={eventTitle}
                   setContent={content => onChangeventTitle(content)}
-                  setIsCreateEventScreen={true}
+                  errorMessage="Please enter a title"
                />
                <EventInput
                   inputLabel="Group"

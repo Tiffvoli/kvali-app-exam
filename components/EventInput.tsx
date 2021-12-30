@@ -39,7 +39,9 @@ export default function EventInput({
             placeholder={placeholder}></TextInput>
 
          {/* Error message */}
-         {IsCreateEventScreen && touched && <Text>{errorMessage}</Text>}
+         {!IsCreateEventScreen && touched && (
+            <Text style={defaultStyles.errorMsg}>{errorMessage}</Text>
+         )}
       </View>
    );
 }

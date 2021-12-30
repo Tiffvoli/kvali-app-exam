@@ -35,6 +35,11 @@ export default generalStyles = StyleSheet.create({
       fontSize: 14,
       fontFamily: 'OpenSans-Regular',
    },
+   errorMsg: {
+      fontSize: 12,
+      fontFamily: 'OpenSans-Regular',
+      color: '#A52A2A',
+   },
    pageCenter: {
       flex: 1,
       justifyContent: 'center',
