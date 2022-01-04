@@ -65,15 +65,15 @@ export default function ChatScreen(props) {
                         <Image
                            source={
                               item?.chatRoomName === 'CBS Surf'
-                                 ? require('../assets/cbs-surf/cbs-surf.png')
+                                 ? require('../assets/chat-imgs/cbs-surf.png')
                                  : item?.chatRoomName === 'CBS Feminist Society'
-                                 ? require('../assets/cbs-fem/cbs-fem.png')
+                                 ? require('../assets/chat-imgs/cbs-fem.png')
                                  : item?.chatRoomName === 'CBS Students'
-                                 ? require('../assets/cbs-students/cbs-students.png')
+                                 ? require('../assets/chat-imgs/cbs-students.png')
                                  : item?.chatRoomName === 'CBS Golf'
-                                 ? require('../assets/cbs-golf/cbs-golf.png')
+                                 ? require('../assets/chat-imgs/cbs-golf.png')
                                  : item?.chatRoomName === 'CBS Poker'
-                                 ? require('../assets/cbs-poker/cbs-poker.png')
+                                 ? require('../assets/chat-imgs/cbs-poker.png')
                                  : null
                            }
                         />

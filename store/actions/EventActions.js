@@ -23,9 +23,12 @@ export const fetchEvents = () => {
       !response.ok && console.error(data);
       if (response.ok) {
          let array = [];
+         // Put objects in a new array before dispatching to reducer
          for (const key in data) {
+            // Use object's name value as event's ID
             let event = data[key];
             event.id = key;
+            // Add objects with id in the newArray
             array.push(event);
          }
          // console.log(array);

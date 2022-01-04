@@ -16,20 +16,20 @@ export default function DiscoverScreen() {
          <SearchField placeholder="Search for events, posts and more"></SearchField>
          <DiscoverCard
             title="All events"
-            imageSource={require('../assets/discover/all-events-2x.png')}
+            imageSource={require('../assets/discover-imgs/all-events-2x.png')}
             onPress={() => navigation.navigate('EventsScreen')}
             overlayColor={{
                backgroundColor: '#700F6E',
             }}></DiscoverCard>
          <DiscoverCard
             title="All Student Organisations"
-            imageSource={require('../assets/discover/all-orgs-2x.png')}
+            imageSource={require('../assets/discover-imgs/all-orgs-2x.png')}
             overlayColor={{
                backgroundColor: '#32305D',
             }}></DiscoverCard>
          <DiscoverCard
             title="All Posts"
-            imageSource={require('../assets/discover/all-posts-2x.png')}
+            imageSource={require('../assets/discover-imgs/all-posts-2x.png')}
             overlayColor={{
                backgroundColor: '#07936B',
             }}></DiscoverCard>

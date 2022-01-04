@@ -54,14 +54,6 @@ export default function ChatRoomScreen(props) {
                   timeStampStyles={{
                      textAlign: item?.user ? 'right' : 'left',
                   }}
-                  // receiverImage={
-                  //   item.receiver === chatRoomId && (
-                  //     <Image
-                  //       style={styles.receiverImage}
-                  //       source={require('../assets/cbs-surf/cbs-surf.png')}
-                  //     />
-                  //   )
-                  // }
                />
             )}></FlatList>
          <View style={styles.inputView}>

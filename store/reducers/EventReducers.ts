@@ -25,7 +25,7 @@ const EventReducer = (state: EventState = initialState, action: any) => {
          return { ...state, events: action.payload };
 
       case EDIT_EVENT:
-         return { ...state, status: action.payload };
+         return { ...state, events: action.payload };
 
       case DELETE_EVENT:
          return { ...state };
