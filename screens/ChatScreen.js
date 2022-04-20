@@ -52,7 +52,6 @@ export default function ChatScreen(props) {
             renderItem={({ item }) => (
                <>
                   <ChatRoom
-                     style={styles.image}
                      onPress={() => {
                         navigation.navigate('ChatRoomScreen', {
                            id: item.id,
@@ -63,6 +62,7 @@ export default function ChatScreen(props) {
                      bodyText={item.messages}
                      children={
                         <Image
+                           style={styles.image}
                            source={
                               item?.chatRoomName === 'CBS Surf'
                                  ? require('../assets/chat-imgs/cbs-surf.png')
@@ -95,4 +95,9 @@ export default function ChatScreen(props) {
    );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+   image: {
+      width: '10.5%',
+      height: '100%',
+   },
+});

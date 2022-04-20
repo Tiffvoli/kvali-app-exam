@@ -21,7 +21,7 @@ export default function ChatRoomScreen(props) {
    const dispatch = useDispatch();
    const roomId = props.route.params.id;
    const chatMessages = useSelector(state => state.chat.chatRooms).find(
-      room => room.id === id,
+      room => room.id === roomId,
    ).messages;
 
    const loggedInUser = useSelector(state => state.user.loggedInUser);

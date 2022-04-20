@@ -16,7 +16,7 @@
     "@reduxjs/toolkit": "^1.6.1",
     "expo": "^43.0.0",
     "expo-app-loading": "~1.2.1",
-    "expo-cli": "^4.11.0",
+    "expo-cli": "^4.13.0",
     "expo-font": "~10.0.3",
     "expo-linear-gradient": "~10.0.3",
     "expo-secure-store": "~11.0.3",
@@ -57,5 +57,18 @@
     "trailingComma": "all",
     "arrowParens": "avoid"
   },
-  "private": true
+  "private": true,
+  "name": "kvali-app-exam",
+  "description": "5th Semester Project",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tiffvoli/kvali-app-exam.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tiffvoli/kvali-app-exam/issues"
+  },
+  "homepage": "https://github.com/Tiffvoli/kvali-app-exam#readme"
 }
